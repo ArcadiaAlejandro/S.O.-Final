@@ -5,11 +5,78 @@ package planificación.del.disco;
  * @author INTEGRANTES
   DE LA CRUZ CHARUN ALEJANDRO ANTONIO
  */
+ int elemento;
+ nodo_pila siguiente;
+ nodo_pila (int x)
+ {
+  elemento = x;
+  siguiente = null;
+ }
+ 
 public class PLANIFICACIÓNDELDISCO {
+
+    class definicion_pila{ //creamos la pila
+      private nodo_pila cima;
+      public pila lista{
+        cima = null;
+      }
+    }
+    
+    public void insertar_pila(int elemento)
+    {
+      Nodo_pila nuevo;
+      nuevo = new Nodo_pila(elemento)
+      nuevo.siguiente = cima;
+      cima = nuevo;
+    }
 
 
     public static void main(String[] args) {
+        BufferedReader dato = new BufferedReader(new InputStreamReader (System.in));
         
+        do{ 
+            System.out.println("\n");
+            System.out.println("==== PLANIFICACIÓN DE DISCO ===");
+            System.out.println("1. Ingresar datos");
+            System.out.println("2. Registrar nuevo algoritmo");
+            System.out.println("3. Eliminar algoritmo");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione opción: ");
+            op= Integer.parseInt(dato.readLine());
+            
+            if(op!=4)
+            { 
+                switch(op)
+                          {   case 1: {
+                                        do{
+                                            System.out.print("Ingrese las peticiones del disco: ");
+                                            mdp= Float.parseFloat(dato.readLine());
+                                            if(mdp<=0) /* solo debe permitir ingresar numeros*/
+                                              System.out.println("ERROR. Vuelva a Ingresar");
+                                         }while(mdp<=0);
+                                          
+                                      }break;
+                              case 2: { do{
+                                            System.out.print("Ingrese monto a retirar: ");
+                                            mrt= Float.parseFloat(dato.readLine());
+                                            if(mrt<=0)
+                                              System.out.println("ERROR. Vuelva a Ingresar");
+                                          }while(mrt<=0);
+
+                                          if(mrt<=msd)
+                                              msd = msd - mrt;
+                                          else
+                                              System.out.print("Saldo Insuficiente");
+
+                                      }break;
+                              case 3:{
+                                      System.out.print("Su saldo es: "+msd);
+                                     }break;
+                          }
+           }
+     }while(op !=4);
+    
+    
     }
     
 }
