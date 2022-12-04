@@ -1,0 +1,66 @@
+package planificación.del.disco;
+
+public class Cola {
+    int elemento;
+    Cola siguiente;
+    
+    public Cola(int dato){
+        elemento  = dato;
+        siguiente = null;
+    }
+}
+
+class Cola_Lista{
+    protected Cola inicio;
+    protected Cola fin;
+
+    public Cola_Lista(){ //creamos la lista para la direccion de memoria
+        inicio = fin; //definimos que ambos esten en la misma direccion de memoria
+        fin = null; // definimos que tanto fin como inicio esten vacios
+    }
+    
+    public boolean Verificacion_cola_vacia()
+    {
+        if (inicio == null)
+            return true;
+        else
+            return false;
+    }
+    
+    public void insertar(int elemento)
+    {
+        Cola sgt;
+        sgt = new Cola (elemento);
+        if(Verificacion_cola_vacia()){ //si la cola esta vacia
+            inicio = sgt; //sqt sera la cabecera
+        }else //caso contrario
+        {
+            fin.siguiente = sgt; //seguira al siguiente regisstro donde lo colocara
+        }
+        
+        fin = sgt;
+    }
+    
+    public int quitar()
+    {
+         int aux;//creamos la variable local para su retorno
+        
+        if(!Verificacion_cola_vacia()) //verificamos que la cola no este vacia
+        {
+             aux = inicio.elemento; 
+            inicio = inicio.siguiente; 
+        }else
+        {
+            return -1;
+        }
+        
+        return aux;
+    }
+    
+    public void borrarcola(){
+        while(inicio != null)
+        {
+            inicio = inicio.siguiente;
+        }
+    }
+}
