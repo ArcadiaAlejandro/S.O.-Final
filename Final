@@ -1,1 +1,16 @@
 
+package planificación.del.disco;
+
+/**
+ * @author INTEGRANTES
+  DE LA CRUZ CHARUN ALEJANDRO ANTONIO
+ */
+public class PLANIFICACIÓNDELDISCO {
+
+
+    public static void main(String[] args) {
+        
+    }
+    
+}
+
