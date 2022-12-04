@@ -1,0 +1,64 @@
+
+package planificación.del.disco;
+
+
+public class Pila {
+    
+    int elemento;  //definimos el tipo de dato a guardar
+    Pila siguiente;
+    
+    Pila(int x)//definimos el constructor
+    {
+        elemento = x; //hacemos un redireccionamiento al tipo de dato a guardar
+        siguiente = null;//apunta a la siguiente direccion, en este caso es vacia
+    }
+}
+
+class definicion_pila{ //creamos la pila
+      private Pila cima; //creamos un objeto de la clase pila 
+      public definicion_pila(){
+        cima = null; //en el constructor la cima va ser null
+      }
+      
+      public boolean Verificacion_de_pila_vacia()//creamos una clase de verificación
+        {
+          if(cima == null)//declaramos la sentencia
+          {
+              return true;
+          }else
+          {
+              return false;
+          }
+        }
+      
+      public void insertar_dato_pila(int elemento){
+          Pila nuevo; //creamos un puntero de la clase pila que apunta a null
+          nuevo = new Pila(elemento); //creamos un nuevo objeto donde su direccion de memoria es vacia
+          nuevo.siguiente = cima; //el puntero, apunta a la siguiente direccion que es cima y que por defecto es vacia
+          cima = nuevo;
+      }
+      
+      public int Quitar_dato_pila()
+      {
+          if(Verificacion_de_pila_vacia())
+          {
+              return -1; //bandera para indicar errores
+          }
+          
+          int aux = cima.elemento; //creamos una variable auxiliar de tipo entero
+          //que apuntara a cima y el elemento ingresado
+          cima = cima.siguiente; //creamos un puntero a la direccion de memoria
+          return aux;
+      }
+      
+      public void Limpiar_pila()
+      {
+          Pila clear; //creamos un puntero de la clase pila que apunta a null
+          while (!Verificacion_de_pila_vacia()) //mientras la pila no indique que esta vacia y nos devuelva un valor de null
+          {
+              clear = cima; //clear va a ser igual a cima
+              cima = cima.siguiente; //direccionamos cima para que clear tenga el mismo comportamiento
+              clear.siguiente = null; // clear cada vez que avance, limpiara los datos
+          }
+      }
+    }
